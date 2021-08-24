@@ -11,6 +11,8 @@
 # 请将这些替换为自己的信息
 shellScript_dir="${HOME}/ddns/"
 
+infoFile="DDNS.conf"
+
 function getMyIPAddr(){
     echo  
     curl ip.p3terx.com
@@ -19,9 +21,28 @@ function getMyIPAddr(){
 function uninstall(){
     echo "已卸载"
 }
-function touchShellScript(){
-    touch "${shellScript_dir}ddns.sh"
+function touchDDNSConfig(){
+    read -p "请输入您的CloudFlare账户邮箱：" cfEmail
+    read -p "请输入您的CloudFlare账户Globel ID：" cfGlobelID
+    read -p "请输入您的域名：例（aaaaa.com）：" domain
+    read -p "请输入您的完整域名：例（haha.aaaaa.com）：" fullDomain
+    read -p "请输入您的TG Token：" tgToken
+    read -p "请输入您的TG UserID：" tgUserID
+    echo ${cfEmail}
+    echo ${cfGlobelID}
+    echo ${domain}
+    echo ${fullDomain}
+    echo ${tgToken}
+    echo ${tgUserID}
+    
     echo -e "\033[32m 脚本文件放在：${shellScript_dir} \033[0m"
+}
+function getIP(){
+        return $(curl -4 ip.sb)
+}
+
+function readFile(){
+    echo $(head -1 $infoFile)
 }
 
 function StartMenu() {
@@ -44,15 +65,17 @@ function StartMenu() {
     read -p " 请输入数字:" inputMenuNumber
     case "$inputMenuNumber" in
             1 )
-           touchShellScript
+           touchDDNSConfig
 	        ;;
 
             2 )
            echo 选择2
+           getIP
 	        ;;
 
             3 )
            echo 选择3
+           readFile
 	        ;;
 
             4 )
