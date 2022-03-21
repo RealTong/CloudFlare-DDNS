@@ -2,10 +2,10 @@
 
 #--------------------------------------------
 # CloudFlare-DDNS
-# author：Wowooco
-# site：www.wushutong.cn
+# author：Antwu
+# site：www.antwu.cn
 # version：v1.0.0
-# repo：https://github.com/Wowooco/CloudFlare-DDNS
+# repo：https://github.com/antwuu/CloudFlare-DDNS
 #--------------------------------------------
 
 # 请将这些替换为自己的信息
@@ -24,16 +24,10 @@ function uninstall(){
 function touchDDNSConfig(){
     read -p "请输入您的CloudFlare账户邮箱：" cfEmail
     read -p "请输入您的CloudFlare账户Globel ID：" cfGlobelID
-    read -p "请输入您的域名：例（aaaaa.com）：" domain
-    read -p "请输入您的完整域名：例（haha.aaaaa.com）：" fullDomain
+    read -p "请输入您的域名：例（example.com）：" domain
+    read -p "请输入您的完整域名：例（abc.example.com）：" fullDomain
     read -p "请输入您的TG Token：" tgToken
     read -p "请输入您的TG UserID：" tgUserID
-    echo ${cfEmail}
-    echo ${cfGlobelID}
-    echo ${domain}
-    echo ${fullDomain}
-    echo ${tgToken}
-    echo ${tgUserID}
     
     echo -e "\033[32m 脚本文件放在：${shellScript_dir} \033[0m"
 }
